@@ -1,0 +1,226 @@
+/* Import a cool font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff; /* FIXED: Changed default text color to white for better contrast */
+    
+    /* IMPROVED: Added a dark gradient background which complements the glass effect */
+    background: linear-gradient(to top, #1c1c1c, #2c3e50);
+    position: center;
+    
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* This flexbox setup centers the card perfectly */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Hide scrollbars */
+}
+
+.profile-card {
+    position: relative; /* Essential for positioning the glow */
+    overflow: hidden;   /* Essential for clipping the glow to the rounded corners */
+    
+    /* ... your other styles like padding, width, etc. ... */
+    
+    text-align: center;
+    padding: 40px 30px;
+    width: 350px;
+    background: rgba(8, 8, 8, 0.37);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(2px);
+    border-radius: 5px;
+    box-shadow: 0 10px 50px 0 rgba(243, 130, 1, 0.37);
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px transparent rgba(241, 132, 8, 0.205);
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 2.2em;
+    margin: 0; /* Let the container handle margins */
+    color: #fff;
+}
+
+.profile-name-container {
+    display: flex; /* The key property! */
+    justify-content: center; /* Horizontally centers the group */
+    align-items: center; /* Vertically aligns the text and icon */
+    gap: 10px; /* Creates space between the name and the badge */
+    margin: 20px 0 10px; /* Apply the original margins here */
+}
+
+.profile-status {
+    font-size: 1em;
+    color: rgba(250, 250, 250, 0.932); /* Slightly transparent white */
+    margin-bottom: 25px;
+}
+
+.social-links a {
+    color: #fff; /* Changed to white for a cleaner look */
+    font-size: 1.8em;
+    margin: 0 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #ec6a00;
+    transform: scale(1.2); /* Add a little pop on hover */
+}
+
+.audio-controls {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Increased gap for better spacing */
+}
+
+#song-title {
+    margin-top: 25px;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+    min-height: 1.2em; /* Prevents layout shift */
+}
+
+/* Update the main audio controls layout */
+.audio-controls {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Increased gap for the main buttons */
+}
+
+.audio-controls i {
+    font-size: 1.5em; /* Make buttons a bit bigger */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.audio-controls i:hover {
+    transform: scale(1.15);
+}
+
+/* ADDED: Styling for the new play/pause button */
+#play-pause-btn {
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#play-pause-btn:hover {
+    transform: scale(1.1);
+}
+
+.background-logo { /* You might have renamed this to .video-background */
+    
+    /* 
+      THE KEY PROPERTY: This "glues" the video to the browser window.
+      It will not scroll or zoom with the rest of the page content.
+    */
+    position: fixed;
+    
+    /* These ensure the video starts in the top-left corner... */
+    top: 0;
+    left: 0;
+    
+    /* ...and stretches to fill the entire window. */
+    width: 100%;
+    height: 100%;
+    filter: opacity(0.2);
+    /* 
+      This tells the video how to fill that space. 'cover' means:
+      "Fill the entire screen without stretching or distorting. If you have
+      to crop some of your edges to do that, that's okay."
+    */
+    object-fit: cover;
+    
+    /* This places the video behind all your other content, like the profile card. */
+    z-index: -1;
+}
+
+.profile-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    /* Make it slightly larger than the card to ensure the glow appears outside the edge */
+    width: 200%;
+    height: 200%;
+    
+    /* This gradient is mostly transparent, creating a "comet" of light */
+    /* The animation that makes it spin */
+    animation: rotate-glow 4s linear infinite;
+    
+    /* Place it BEHIND the card's content */
+    z-index: -1;
+    
+    /* THIS IS THE KEY: Blur the element to create a soft glow */
+    filter: blur(70px);
+}
+
+/* Define the spinning animation (this can stay the same) */
+@keyframes rotate-glow {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.profile-status.typing::after {
+    content: '|';
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+}
+
+/* The animation that makes the cursor blink */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* These styles apply to screens 600px wide or smaller */
+@media (max-width: 600px) {
+    .profile-card {
+        /* On mobile, maybe the card is wider and has less padding */
+        width: 95%;
+        padding: 20px 15px;
+    }
+}
+
+.navigation-links {
+    margin-top: 20px; /* Space above the button */
+}
+
+.nav-button {
+    display: inline-block; /* Allows us to set padding */
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.15); /* A subtle glass background */
+    color: #fff;
+    text-decoration: none; /* Remove the ugly underline */
+    font-weight: 600;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+    background: rgba(255, 255, 255, 0.3); /* Light up on hover */
+}

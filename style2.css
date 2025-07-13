@@ -1,0 +1,390 @@
+/*
+=========================================
+    SHARED BASE STYLES
+=========================================
+*/
+html {
+    background: linear-gradient(to top, #1c1c1c, #2c3e50);
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+}
+
+.scrollable-page {
+    padding: 2rem 0;
+}
+
+.background-logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 1.0;
+}
+
+
+/*
+=========================================
+    PORTFOLIO PAGE STYLES
+=========================================
+*/
+.portfolio-container {
+    position: relative;
+    overflow: hidden;
+    max-width: 1100px;
+    width: 90%;
+    margin: 3rem auto;
+    padding: 40px;
+    background: rgba(36, 35, 35, 0.5);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border-radius: 20px;
+    border: 3px solid rgba(255, 123, 0, 0.877);
+}
+
+.portfolio-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.portfolio-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px transparent rgba(255, 255, 255, 0.5);
+    margin-bottom: 1rem;
+}
+
+.portfolio-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
+}
+
+.portfolio-section {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 3rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 15px;
+    margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+    font-size: 2em;
+    margin-bottom: 0;
+}
+
+.section-header i {
+    font-size: 1.5em;
+    color: #ffb86c;
+}
+
+.portfolio-section p {
+    text-align: justify;
+    line-height: 1.7;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+/* Skills Section */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.skill-tag {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+    background: #ec6b00;
+    transform: translateY(-3px);
+    color: #fff;
+}
+
+
+/* Projects Section Styling */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgb(248, 132, 0);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.project-info {
+    padding: 20px;
+}
+
+.project-info h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+
+/* Contact Section */
+.contact-section {
+    text-align: center;
+}
+.contact-section p {
+    text-align: center;
+    background: none;
+    padding: 0;
+}
+.contact-section .social-links {
+    margin-top: 1rem;
+}
+.contact-section .social-links a {
+    font-size: 2.5em;
+    color: #fff;
+    margin: 0 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.contact-section .social-links a:hover {
+    color: #ff7300;
+    transform: scale(1.1);
+}
+
+
+/* Navigation Button Styling */
+.navigation-links {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.nav-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 20px;
+    border: 3px solid rgb(241, 97, 0);
+    transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+    background: rgba(255, 85, 85, 0.3);
+}
+
+
+/*
+=========================================
+    COOLER ANIMATIONS & EFFECTS
+=========================================
+*/
+.portfolio-container::before,
+.portfolio-container::after,
+.showcase-container::before,
+.showcase-container::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, #f08000, transparent 60%);
+    filter: blur(120px);
+    animation: aurora-drift 15s infinite linear;
+}
+.portfolio-container::after,
+.showcase-container::after {
+    background: radial-gradient(circle, #fc7a00, transparent 60%);
+    top: 0;
+    right: 0;
+    animation-direction: alternate-reverse;
+    animation-duration: 20s;
+}
+@keyframes aurora-drift {
+    0% { transform: translate(-30%, -30%) rotate(0deg); }
+    50% { transform: translate(30%, 40%) rotate(180deg); }
+    100% { transform: translate(-30%, -30%) rotate(360deg); }
+}
+
+.animate-pop-in {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.animate-pop-in.is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.animate-stagger-container .stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+.animate-stagger-container.is-visible .stagger-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+.animate-stagger-container.is-visible .stagger-item:nth-child(1) { transition-delay: 0.1s; }
+.animate-stagger-container.is-visible .stagger-item:nth-child(2) { transition-delay: 0.2s; }
+.animate-stagger-container.is-visible .stagger-item:nth-child(3) { transition-delay: 0.3s; }
+.animate-stagger-container.is-visible .stagger-item:nth-child(4) { transition-delay: 0.4s; }
+.animate-stagger-container.is-visible .stagger-item:nth-child(5) { transition-delay: 0.5s; }
+.animate-stagger-container.is-visible .stagger-item:nth-child(6) { transition-delay: 0.6s; }
+.animate-stagger-container.is-visible .stagger-item:nth-child(7) { transition-delay: 0.7s; }
+.animate-stagger-container.is-visible .stagger-item:nth-child(8) { transition-delay: 0.8s; }
+
+
+/*
+=========================================
+    PROJECT SHOWCASE PAGE STYLES
+=========================================
+*/
+.showcase-container {
+    position: relative;
+    overflow: hidden;
+    max-width: 1200px;
+    width: 90%;
+    margin: 3rem auto;
+    padding: 40px;
+    background: rgba(31, 31, 31, 0.685);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 3px solid rgb(240, 108, 0);
+    color: #24232362;
+}
+
+.showcase-header,
+.showcase-gallery,
+.showcase-description,
+.showcase-container .navigation-links {
+    position: relative;
+    z-index: 2;
+}
+
+.showcase-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.showcase-header h1 {
+    font-size: 3em;
+    margin: 0;
+}
+.showcase-header p {
+    font-size: 1.2em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.showcase-gallery {
+    margin-bottom: 3rem;
+}
+
+.main-image img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.thumbnail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.thumbnail-grid img {
+    width: 100%;
+    border-radius: 10px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.thumbnail-grid img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.showcase-description {
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+    text-align: center;
+    line-height: 1.7;
+}
+.showcase-description h2 {
+    margin-bottom: 1rem;
+    font-size: 2em;
+}
+.showcase-description p {
+    text-align: justify;
+}
+
+/*
+=========================================
+    NEW GLOBAL PLAYER STYLES
+=========================================
+*/
+.global-player-control {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    background: rgba(25, 25, 25, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.global-player-control:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 85, 85, 0.5); /* Themed hover */
+}
+
+.global-player-control i {
+    font-size: 1.2em;
+    color: #fff;
+}
